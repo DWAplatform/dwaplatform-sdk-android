@@ -1,6 +1,30 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+ext {
+    bintrayRepo = 'dwaplatform-sdk-android'
+    bintrayName = 'dwaplatform'
+
+    publishedGroupId = 'com.dwaplatform'
+    libraryName = 'dwaplatform'
+    artifact = 'dwaplatform'
+
+    libraryDescription = 'DWAplatform SDK Android'
+
+    siteUrl = 'https://github.com/DWAplatform/dwaplatform-sdk-android'
+    gitUrl = 'https://github.com/DWAplatform/dwaplatform-sdk-android.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = ''
+    developerName = 'DWAplatform'
+    developerEmail = 'tiziano.cappellari@dwafintech.com'
+
+    licenseName = 'MIT'
+    licenseUrl = 'https://raw.githubusercontent.com/DWAplatform/dwaplatform-sdk-android/master/LICENSE'
+    allLicenses = ["MIT"]
+}
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
@@ -48,10 +72,18 @@ dependencies {
     testCompile "com.nhaarman:mockito-kotlin:1.5.0"
 
     androidTestCompile 'org.mockito:mockito-core:2.8.47'
-//    androidTestCompile "com.nhaarman:mockito-kotlin:1.5.0"
     androidTestCompile 'org.mockito:mockito-android:2.8.47'
 }
 
 repositories {
     mavenCentral()
 }
+
+
+tasks.withType(Javadoc).all {
+    enabled = false
+}
+
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

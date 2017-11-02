@@ -4,27 +4,13 @@ DWAplatform is an Android client library to work with DWAplatform.
 
 Installation
 -------------------------------------------------
-SDK has been written in Kotlin.
 
-The SDK is published as a Maven artifact on Maven Central Repository (http://search.maven.org/) and can be used with Gradle or Maven.
+### Android Studio (or Gradle)
 
-```
-repositories {
-    mavenCentral()
-}
+No need to clone the repository or download any files -- just add this line to your app's `build.gradle` inside the `dependencies` section:
 
-dependencies {
-    compile 'com.dwaplatform:dwaplatform-sdk-android:1.0.0'
-}
-```
+    compile 'com.dwaplatform:dwaplatform:1.0.0'
 
-```
-<dependency>
-  <groupId>com.dwaplatform</groupId>
-  <artifactId>dwaplatform-sdk-android</artifactId>
-  <version>1.0.0</version>
-</dependency>
-```
 
 License
 -------------------------------------------------
@@ -39,7 +25,7 @@ Report bugs or suggest features using
 
 Sample usage in Java
 -------------------------------------------------
-```
+```java
     import com.platform.android.card.DWAplatform;
 	import com.platform.android.card.CardAPI;
 	import com.platform.android.card.models.Card;
@@ -56,7 +42,7 @@ Sample usage in Java
 
     // Register card
 	// get token from POST call: .../rest/v1/:clientId/users/:userId/accounts/:accountId/cards
-    final String token = "XXXXXXXX-YYYY-ZZZZ-KKKK-WWWWWWWWWWWW";
+    final String token = "XXXXXXXXYYYYZZZZKKKKWWWWWWWWWWWWTTTTTTTFFFFFFF....";
     final String cardNumber = "1234567812345678";
     final String expiration = "1122";
     final String cxv = "123";
@@ -66,7 +52,7 @@ Sample usage in Java
                     	// now you can access to card object to request cashin, etc.
                     	println(card.getId());
                     }
-				});
+                });
 
 
 
