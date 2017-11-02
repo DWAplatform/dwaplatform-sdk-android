@@ -27,8 +27,8 @@ Sample usage in Java
 -------------------------------------------------
 ```java
     import com.platform.android.card.DWAplatform;
-	import com.platform.android.card.CardAPI;
-	import com.platform.android.card.models.Card;
+    import com.platform.android.card.CardAPI;
+    import com.platform.android.card.models.Card;
 
 
     //....
