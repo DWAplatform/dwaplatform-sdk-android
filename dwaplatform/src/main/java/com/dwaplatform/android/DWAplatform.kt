@@ -17,47 +17,29 @@ import com.dwaplatform.android.card.log.Log
  * Obtain all DWAplatform objects using this class.
  * Notice: before use any factory method you have to call initialize.
  *
- * Usage Example class extends Android Activity:
+ * Usage Example:
  *
-class MainActivity: AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    val config = DWAplatform.Configuration("DWAPLATFORM_SANDBOX_HOSTNAME", true)
+    DWAplatform.initialize(config)
 
-        setContentView(R.layout.activity_main)
+    val cardAPI = DWAplatform.getCardAPI(context)
 
-        val config = DWAplatform.Configuration("DWAPLATFORM_SANDBOX_HOSTNAME", true)
-        DWAplatform.initialize(config)
+    //get token from POST call:
+    // rest/v1/:clientId/users/:userId/accounts/:accountId/cards
+    val token = "XXXXXXXXYYYYZZZZKKKKWWWWWWWWWWWWTTTTTTTFFFFFFF...."
+    val cardNumber = "1234567812345678"
+    val expiration = "1122"
+    val cxv = "123"
 
-        val cardAPI = DWAplatform.getCardAPI(this)
-        val callApi = findViewById<Button>(R.id.callApi)
-
-        //get token from POST call:
-        // rest/v1/:clientId/users/:userId/accounts/:accountId/cards
-        val token = "f422ac9c-bd76-11e7-a21f-bf8fecc6b286"
-        val cardNumber = "1234567812345678"
-        val expiration = "1122"
-        val cxv = "123"
-
-        callApi.setOnClickListener {
-            cardAPI.registerCard(token, cardNumber, expiration, cxv) { card, e ->
-                if (e != null) {
-                    if (e is CardAPI.APIReplyError) {
-                        val js = (e as CardAPI.APIReplyError?)?.json
-                        if (js != null) {
-                            Log.d("MainActivity", js.toString())
-                        }
-                        else
-                            Log.d("MainActivity", e.throwable.message)
-                    } else {
-                        Log.d("MainActivity", e.message)
-                    }
-                } else {
-                    Log.d("MainActivity", card.toString())
-                }
-            }
+    cardAPI.registerCard(token, cardNumber, expiration, cxv) { card, e ->
+        if (e != null) {
+            Log.e("Sample", e.message)
+            return@registerCard
+        }
+        card?.let {
+            Log.d("Sample", "card id: $card.id")
         }
     }
-}
  *
  */
 class DWAplatform {
