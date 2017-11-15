@@ -1,5 +1,8 @@
 DWAplatform Android SDK
 =================================================
+
+[![Build Status](https://api.travis-ci.org/DWAplatform/dwaplatform-sdk-android.svg?branch=master)](https://travis-ci.org/DWAplatform/dwaplatform-sdk-android)
+
 DWAplatform is an Android client library to work with DWAplatform.
 
 Installation
